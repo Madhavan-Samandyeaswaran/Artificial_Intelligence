@@ -9,6 +9,10 @@ def is_valid_assignment(assignment, equation):
     return num1 + num2 == result
 
 def solve_cryptarithmetic(equation):
+    if len(equation) < 3:
+        print("Invalid input: At least three words are required for the equation.")
+        return
+    
     unique_chars = set(char for word in equation for char in word)
     if len(unique_chars) > 10:
         print("Invalid equation: Too many unique characters.")
@@ -25,6 +29,10 @@ def solve_cryptarithmetic(equation):
     print("No solution found.")
 
 if __name__ == "__main__":
-    # Example Cryptarithmetic problem: SEND + MORE = MONEY
-    equation = ['SEND', 'MORE', 'MONEY']
+    print("Enter the cryptarithmetic problem one word at a time. Enter 'done' when finished.")
+    equation = []
+    word = input("Enter a word: ")
+    while word.lower() != 'done':
+        equation.append(word.upper())
+        word = input("Enter another word or 'done' to finish: ")
     solve_cryptarithmetic(equation)
